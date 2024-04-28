@@ -95,7 +95,7 @@ function App() {
 
           <div className="docLoad">
             <div className="front">
-              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'front')} />
+              <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
               {front ? (
                 <img src={front} alt='' />
               ) : (
@@ -104,7 +104,7 @@ function App() {
               <span>Antes ID CARD</span>
             </div>
             <div className="back">
-              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'back')} />
+              <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'back')} />
               {back ? (
                 <img src={back} alt='' />
               ) : (
@@ -113,7 +113,7 @@ function App() {
               <span>Atrás ID CARD</span>
             </div>
             <div className="slefie">
-              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'selfie')} />
+              <input type="file" accept="image/*" capture="user" onChange={(e) => handleFileChange(e, 'selfie')} />
               {selfie ? (
                 <img src={selfie} alt='' />
               ) : (
