@@ -86,7 +86,7 @@ function App() {
           <div className="eight"><span>€20</span></div>
         </div>
         <BiSolidUpArrow className='arrow' />
-        <button onClick={spinWheel} style={result ? { backgroundColor: '#fbc50246', pointerEvents: 'none' } : {}}>Gira la Rueda</button>
+        <button onClick={spinWheel} style={rotation > 0 ? { backgroundColor: '#fbc50246', pointerEvents: 'none' } : {}}>Gira la Rueda</button>
         <p>Si algo salió mal, escribe al soporte.</p>
 
         <div className="modal" style={result ? { transform: 'translate(-50%, -50%) scale(1)' } : {}}>
