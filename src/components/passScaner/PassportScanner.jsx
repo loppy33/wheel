@@ -29,7 +29,7 @@ const PassportScanner = ({ setPassScaner, passScaner, setFront, setBack, setSelf
 
       <Camera
         className="camera"
-        IdealFacingMode={FACING_MODES.ENVIRONMENT}
+        idealFacingMode={FACING_MODES.ENVIRONMENT}
         onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
         isFullscreen={true}
       />
