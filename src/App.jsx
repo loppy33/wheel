@@ -19,21 +19,24 @@ function App() {
     <div className="App">
       <div className="container">
         {passScaner ? (
-        <PassportScanner
-          front={front}
-          setFront={setFront} setBack={setBack} setSelfie={setSelfie}
-          passScaner={passScaner} setPassScaner={setPassScaner}
+          // Если passScaner установлен в true, отображаем компонент PassportScanner
+          <PassportScanner
+            front={front}
+            setFront={setFront} setBack={setBack} setSelfie={setSelfie}
+            passScaner={passScaner} setPassScaner={setPassScaner}
           ></PassportScanner>
-          
-          ) : ('')}
+        ) : (
+          // Если passScaner не установлен, отображаем компонент Wheel и Modal
+          <>
+            <Wheel setResult={setResult}></Wheel>
+            <Modal
+              setFront={setFront} setBack={setBack} setSelfie={setSelfie}
+              front={front} back={back} selfie={selfie}
+              setPassScaner={setPassScaner} result={result}
+            ></Modal>
+          </>
+        )}
 
-        <Wheel setResult={setResult}></Wheel>
-
-        <Modal
-          setFront={setFront} setBack={setBack} setSelfie={setSelfie}
-          front={front} back={back} selfie={selfie}
-          setPassScaner={setPassScaner} result={result}
-          ></Modal>
       </div>
     </div>
   );
