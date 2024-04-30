@@ -3,14 +3,10 @@ import { FaRegAddressCard } from "react-icons/fa6";
 import { FaRegCreditCard } from "react-icons/fa6";
 import { FaRegCircleUser } from "react-icons/fa6";
 import axios from 'axios';
-import PassportScanner from "./PassportScanner";
 
-const Modal = (props) => {
-    const result = props.result
+const Modal = ({result, front, back, selfie, setFront, setBack, setSelfie, setPassScaner}) => {
 
-    const [front, setFront] = useState();
-    const [back, setBack] = useState();
-    const [selfie, setSelfie] = useState();
+
     const [email, setEmail] = useState();
     const [emailError, setEmailError] = useState(false);
 
@@ -54,11 +50,6 @@ const Modal = (props) => {
         }
     };
 
-    const handleCapture = (dataUri) => {
-        // Обработка снимка паспорта
-        console.log('Captured passport:', dataUri);
-        // Можете сохранить dataUri в состоянии или использовать его напрямую в handleSubmit
-    };
 
     return (
         <div className="modal" style={result ? { transform: 'translate(-50%, -50%) scale(1)' } : {}}>
@@ -79,30 +70,29 @@ const Modal = (props) => {
 
                     <div className="docLoad">
                         <div className="front">
-                            {/* <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} /> */}
-                            <PassportScanner onCapture={handleCapture} />
+                            <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
                             {front ? (
-                                <img src={URL.createObjectURL(front)} alt='' />
+                                <img src={front} alt='' onClick={() => setPassScaner('front')}/>
                             ) : (
-                                <FaRegAddressCard />
+                                <FaRegAddressCard onClick={() => setPassScaner('front')} />
                             )}
                             <span>Antes ID CARD</span>
                         </div>
                         <div className="back">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'back')} />
                             {back ? (
-                                <img src={URL.createObjectURL(back)} alt='' />
+                                <img src={back} alt='' onClick={() => setPassScaner('back')}/>
                             ) : (
-                                <FaRegCreditCard />
+                                <FaRegCreditCard onClick={() => setPassScaner('back')} />
                             )}
                             <span>Atrás ID CARD</span>
                         </div>
                         <div className="slefie">
                             <input type="file" accept="image/*" capture="user" onChange={(e) => handleFileChange(e, 'selfie')} />
                             {selfie ? (
-                                <img src={URL.createObjectURL(selfie)} alt='' />
+                                <img src={selfie} alt='' onClick={() => setPassScaner('selfie')} />
                             ) : (
-                                <FaRegCircleUser />
+                                <FaRegCircleUser onClick={() => setPassScaner('selfie')} />
                             )}
                             <span>Autofoto</span>
                         </div>

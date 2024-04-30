@@ -8,7 +8,7 @@ import { BiSolidUpArrow } from "react-icons/bi";
 
 import { useState } from 'react';
 
-const Wheel = (props) => {
+const Wheel = ({setResult}) => {
   const [rotation, setRotation] = useState(0);
 
     const spinWheel = () => {
@@ -46,7 +46,7 @@ const Wheel = (props) => {
             segment = '€5';
         }
         setTimeout(() => {
-            props.setResult(segment);
+            setResult(segment);
         }, 6000)
     };
 
