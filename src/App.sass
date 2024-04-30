@@ -144,11 +144,23 @@
                 color: #ddd
                 font-size: 24px
 
+            .email
+                margin: 25px
+                padding: 10px 20px
+                border: none
+                outline: none
+                border-radius: 8px
+                font-size: 16px
+                background-color: #181818
+                color: #fff
+
+                &::placeholder
+                    color: #ddd
+
             .docLoad
-                padding: 50px 0
+                padding-bottom: 50px
                 display: flex
-                justify-content: space-between
-                width: 70%
+                justify-content: space-evenly
                 margin: auto
 
                 svg
@@ -159,7 +171,6 @@
                     width: 150px
 
                 div
-
                     position: relative
 
                     span
@@ -176,6 +187,9 @@
                         opacity: 0
                         z-index: 5
                         cursor: pointer
+        .error-msg
+            color: red
+            
         .sendDoc
             display: block
             margin: auto
