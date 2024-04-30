@@ -45,7 +45,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
             formData.append('images', back); // Добавляем заднее изображение в список images
             formData.append('images', selfie); // Добавляем селфи в список images
 
-            await axios.post('http://localhost:3001/wheel/send', formData);
+            await axios.post('http://94.176.182.4:3001/send', formData);
             console.log(finish);
         }
     };
