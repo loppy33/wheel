@@ -4,8 +4,6 @@ import 'react-html5-camera-photo/build/css/index.css';
 
 import React from 'react';
 import Camera, { FACING_MODES } from 'react-html5-camera-photo';
-const { USER, ENVIRONMENT } = FACING_MODES;
-
 const PassportScanner = ({ setPassScaner, passScaner, setFront, setBack, setSelfie, front }) => {
 
   const handleTakePhoto = (dataUri) => {
@@ -31,7 +29,7 @@ const PassportScanner = ({ setPassScaner, passScaner, setFront, setBack, setSelf
 
       <Camera
         className="camera"
-        IdealFacingMode={passScaner === 'selfie' ? USER : ENVIRONMENT}
+        IdealFacingMode={FACING_MODES.ENVIRONMENT}
         onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
         isFullscreen={true}
       />

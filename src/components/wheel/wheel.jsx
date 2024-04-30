@@ -53,7 +53,7 @@ const Wheel = ({setResult}) => {
 
     return (
         <div >
-            <h1>Rueda de la fortuna1</h1>
+            <h1>Rueda de la fortuna</h1>
             <div className="wheel" style={{ transform: `rotate(${rotation}deg)` }}>
                 <img src={SpainFlag} alt="" className='icon' />
                 <div className="one"><span><img src={Amazon} alt="" /></span></div>
