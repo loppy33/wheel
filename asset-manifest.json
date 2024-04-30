@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/wheel/static/css/main.d407a53b.css",
-    "main.js": "/wheel/static/js/main.5d6ae754.js",
+    "main.css": "/wheel/static/css/main.c24e8415.css",
+    "main.js": "/wheel/static/js/main.95032d14.js",
     "static/media/netflix.png": "/wheel/static/media/netflix.79ffb917913430bb26a0.png",
     "static/media/nike.png": "/wheel/static/media/nike.d411384e4101f24e2691.png",
     "static/media/spotify.png": "/wheel/static/media/spotify.3d028197a608c3e68651.png",
     "static/media/spainFlag.png": "/wheel/static/media/spainFlag.f4c436cc956de477116e.png",
     "index.html": "/wheel/index.html",
-    "main.d407a53b.css.map": "/wheel/static/css/main.d407a53b.css.map",
-    "main.5d6ae754.js.map": "/wheel/static/js/main.5d6ae754.js.map"
+    "main.c24e8415.css.map": "/wheel/static/css/main.c24e8415.css.map",
+    "main.95032d14.js.map": "/wheel/static/js/main.95032d14.js.map"
   },
   "entrypoints": [
-    "static/css/main.d407a53b.css",
-    "static/js/main.5d6ae754.js"
+    "static/css/main.c24e8415.css",
+    "static/js/main.95032d14.js"
   ]
 }
