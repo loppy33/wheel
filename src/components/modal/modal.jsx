@@ -9,8 +9,12 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
 
     const [email, setEmail] = useState();
     const [emailError, setEmailError] = useState(false);
-
     const [finish, setFinish] = useState(false)
+
+    const [frontImage, setFrontImage] = useState();
+    const [backImage, setBackImage] = useState();
+    const [selfieImage, setSelfieImage] = useState();
+
 
 
     const [isMobile, setIsMobile] = useState(false);
@@ -54,12 +58,15 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
         switch (type) {
             case 'front':
                 setFront(file);
+                setFrontImage(URL.createObjectURL(file))
                 break;
             case 'back':
                 setBack(file);
+                setBackImage(URL.createObjectURL(file))
                 break;
             case 'selfie':
                 setSelfie(file);
+                setSelfieImage(URL.createObjectURL(file))
                 break;
             default:
                 break;
@@ -83,12 +90,12 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         onChange={(e) => setEmail(e.target.value)}
                         size="30"
                         required />
-
                     <div className="docLoad">
                         <div className="front">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
+                            {/*  */}
                             {front ? (
-                                <img src={front} alt='' onClick={() => setPassScaner('front')} />
+                                <img src={frontImage ? frontImage : front} alt='' onClick={() => setPassScaner('front')} />
                             ) : (
                                 <FaRegAddressCard onClick={() => setPassScaner('front')} />
                             )}
@@ -97,7 +104,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         <div className="back">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'back')} />
                             {back ? (
-                                <img src={back} alt='' onClick={() => setPassScaner('back')} />
+                                <img src={backImage ? backImage : back} alt='' onClick={() => setPassScaner('back')} />
                             ) : (
                                 <FaRegCreditCard onClick={() => setPassScaner('back')} />
                             )}
@@ -106,7 +113,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         <div className="slefie">
                             <input type="file" accept="image/*" capture="user" onChange={(e) => handleFileChange(e, 'selfie')} />
                             {selfie ? (
-                                <img src={selfie} alt='' onClick={() => setPassScaner('selfie')} />
+                                <img src={selfieImage ? selfieImage : selfie} alt='' onClick={() => setPassScaner('selfie')} />
                             ) : (
                                 <FaRegCircleUser onClick={() => setPassScaner('selfie')} />
                             )}
