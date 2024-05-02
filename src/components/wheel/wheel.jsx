@@ -67,7 +67,7 @@ const Wheel = ({setResult}) => {
             </div>
             <BiSolidUpArrow className='arrow' />
             <button onClick={spinWheel} style={rotation > 0 ? { backgroundColor: '#fbc50246', pointerEvents: 'none' } : {}}>Gira la Rueda</button>
-            <p>Si algo salió mal, escribe al soporte.</p>
+            <p>Si algo salió mal, escribe al <a href="https://t.me/emiliogonzalesg">soporte</a>.</p>
         </div>
     );
 };
