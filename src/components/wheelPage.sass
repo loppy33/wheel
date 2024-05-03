@@ -1,0 +1,370 @@
+.WheelPage
+    .container
+        width: calc( 100% - 20px )
+        max-width: 1200px
+        margin: auto
+        font-family: 'Outfit'
+        text-align: center
+
+        h1
+            padding: 50px
+            font-size: 50px
+            color: #fbc402
+            text-shadow: .1em .1em 0 hsl(200 50% 30%)
+
+        .wheel
+            margin: auto
+            width: 500px
+            height: 500px
+            background-color: #fff
+            border-radius: 50%
+            border: 15px solid #fbc402
+            overflow: hidden
+            position: relative
+            transition: 5s
+
+            div
+                height: 50%
+                width: 200px
+                position: absolute
+                clip-path: polygon(100% 0, 50% 100%, 0 0)
+                transform: translateX(-50%)
+                transform-origin: bottom
+                text-align: center
+                display: flex
+                align-items: baseline
+                justify-content: center
+                font-size: 30px
+                font-weight: bold
+                color: #fff
+                left: 135px
+
+                span
+                    transform: rotate(180deg)
+                    padding-bottom: 30px
+
+                    img
+                        width: 100px
+
+            .one
+                background-color: #00a2e4
+                left: 50%
+
+            .two
+                background-color: #115570
+                transform: rotate(45deg)
+
+            .three
+                background-color: #00a2e4
+                transform: rotate(90deg)
+
+            .four
+                background-color: #115570
+                transform: rotate(135deg)
+
+            .five
+                background-color: #00a2e4
+                transform: rotate(180deg)
+
+            .six
+                background-color: #115570
+                transform: rotate(225deg)
+
+            .seven
+                background-color: #00a2e4
+                transform: rotate(270deg)
+
+            .eight
+                background-color: #115570
+                transform: rotate(315deg)
+
+        .arrow
+            color: #fff
+            font-size: 50px
+            margin-bottom: 50px
+
+        .icon
+            z-index: 1
+            position: absolute
+            transform: translate(-50%, -50%)
+            top: 50%
+            left: 50%
+            width: 50px
+            height: 50px
+            object-fit: cover
+            border: 1px solid #fbc402
+            border-radius: 50%
+            background-color: #fbc402
+
+        button
+            display: block
+            margin: auto
+            background-color: #fbc402
+            border: none
+            font-size: 30px
+            padding: 10px 60px
+            color: #000
+            font-weight: 600
+            border-radius: 10px
+            box-shadow: 0px 9px 44px 0px rgba(255, 207, 1, 0.2)
+            cursor: pointer
+            transition: 0.3s
+
+            &:hover
+                box-shadow: 0px 9px 44px 0px rgba(255, 207, 1, 0.3)
+
+        p
+            color: #fbc502a6
+
+            a
+                color: #00a2e4
+
+        .modal
+            transition: 0.3s
+            padding: 25px
+            border-radius: 12px
+            background-color: #2424247e
+            backdrop-filter: blur(20px)
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%) scale(0)
+
+            h2
+                color: #fff
+                font-size: 38px
+
+                span
+                    color: #00a2e4
+            p
+                color: #ddd
+                font-size: 24px
+
+            .email
+                margin: 25px
+                padding: 10px 20px
+                border: none
+                outline: none
+                border-radius: 8px
+                font-size: 16px
+                background-color: #181818
+                color: #fff
+
+                &::placeholder
+                    color: #ddd
+
+            .docLoad
+                padding-bottom: 50px
+                display: flex
+                justify-content: space-evenly
+                margin: auto
+
+                svg
+                    width: 150px
+                    font-size: 100px
+
+                img
+                    width: 150px
+
+                div
+                    position: relative
+
+                    span
+                        color: #fff
+                        display: block
+
+                    input
+                        position: absolute
+                        background-color: pink
+                        top: 0
+                        left: 0
+                        width: 100%
+                        height: 100%
+                        opacity: 0
+                        z-index: 5
+                        cursor: pointer
+        .error-msg
+            color: red
+
+        .sendDoc
+            display: block
+            margin: auto
+            background-color: #00a2e4
+            border: none
+            font-size: 30px
+            padding: 10px 60px
+            color: #000
+            font-weight: 600
+            border-radius: 10px
+            box-shadow: 0px 9px 44px 0px rgba(1, 103, 255, 0.2)
+            cursor: pointer
+            transition: 0.3s
+
+            &:hover
+                box-shadow: 0px 9px 44px 0px rgba(1, 103, 255, 0.3)
+
+@media ( max-width: 600px )
+    .App
+        .container
+
+            h1
+                padding: 10px
+                padding-bottom: 30px
+                font-size: 50px
+
+            .wheel
+                width: 350px
+                height: 350px
+
+                div
+                    height: 50%
+                    width: 140px
+                    font-size: 20px
+                    left: 90px
+
+                    span
+                        transform: rotate(180deg)
+                        padding-bottom: 20px
+
+                        img
+                            width: 60px
+
+                .one
+                    background-color: #00a2e4
+                    left: 50%
+
+                .two
+                    background-color: #115570
+                    transform: rotate(45deg)
+
+                .three
+                    background-color: #00a2e4
+                    transform: rotate(90deg)
+
+                .four
+                    background-color: #115570
+                    transform: rotate(135deg)
+
+                .five
+                    background-color: #00a2e4
+                    transform: rotate(180deg)
+
+                .six
+                    background-color: #115570
+                    transform: rotate(225deg)
+
+                .seven
+                    background-color: #00a2e4
+                    transform: rotate(270deg)
+
+                .eight
+                    background-color: #115570
+                    transform: rotate(315deg)
+
+            .arrow
+                color: #fff
+                font-size: 30px
+                margin-bottom: 20px
+
+            .icon
+                z-index: 1
+                position: absolute
+                transform: translate(-50%, -50%)
+                top: 50%
+                left: 50%
+                width: 50px
+                height: 50px
+                object-fit: cover
+                border: 1px solid #fbc402
+                border-radius: 50%
+                background-color: #fbc402
+
+            button
+                display: block
+                margin: auto
+                background-color: #fbc402
+                border: none
+                font-size: 30px
+                padding: 10px 60px
+                color: #000
+                font-weight: 600
+                border-radius: 10px
+                box-shadow: 0px 9px 44px 0px rgba(255, 207, 1, 0.2)
+                cursor: pointer
+                transition: 0.3s
+
+                &:hover
+                    box-shadow: 0px 9px 44px 0px rgba(255, 207, 1, 0.3)
+
+            p
+                color: #fbc502a6
+
+            .modal
+                top: 0
+                left: 0
+                position: absolute
+
+                width: 100%
+
+                transition: 0.3s
+                padding: 20px
+
+                h2
+                    color: #fff
+                    font-size: 30px
+                    padding-bottom: 10px
+
+                    span
+                        color: #00a2e4
+                p
+                    font-size: 20px
+
+                .email
+                    margin: 15px auto
+                    // padding: 0
+
+                .docLoad
+                    padding: 0px 0
+                    width: 100%
+                    display: flex
+                    flex-direction: column
+
+                    svg
+                        width: 80px
+                        font-size: 60px
+
+                    img
+                        width: 125px
+
+                    div
+                        padding: 10px
+                        position: relative
+
+                        span
+                            color: #fff
+                            display: block
+
+                        input
+
+                            display: none
+                            position: absolute
+                            top: 0
+                            left: 0
+                            width: 100%
+                            height: 100%
+            .sendDoc
+                display: block
+                background-color: #00a2e4
+                border: none
+                font-size: 16px
+                padding: 10px 60px
+                margin: 10px auto
+                color: #000
+                font-weight: 600
+                border-radius: 10px
+                box-shadow: 0px 9px 44px 0px rgba(1, 103, 255, 0.2)
+                cursor: pointer
+                transition: 0.3s
+
+                &:hover
+                    box-shadow: 0px 9px 44px 0px rgba(1, 103, 255, 0.3)
