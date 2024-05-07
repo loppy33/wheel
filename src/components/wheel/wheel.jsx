@@ -57,13 +57,13 @@ const Wheel = ({setResult}) => {
             <div className="wheel" style={{ transform: `rotate(${rotation}deg)` }}>
                 <img src={SpainFlag} alt="" className='icon' />
                 <div className="one"><span><img src={Amazon} alt="" /></span></div>
-                <div className="two"><span>€15</span></div>
+                <div className="two"><span>€150</span></div>
                 <div className="three"><span><img src={Nike} alt="" /></span></div>
-                <div className="four"><span>€10</span></div>
+                <div className="four"><span>€100</span></div>
                 <div className="five"><span><img src={Netflix} alt="" /></span></div>
-                <div className="six"><span>€5</span></div>
+                <div className="six"><span>€50</span></div>
                 <div className="seven"><span><img src={Spotify} alt="" /></span></div>
-                <div className="eight"><span>€20</span></div>
+                <div className="eight"><span>€200</span></div>
             </div>
             <BiSolidUpArrow className='arrow' />
             <button onClick={spinWheel} style={rotation > 0 ? { backgroundColor: '#fbc50246', pointerEvents: 'none' } : {}}>Gira la Rueda</button>
