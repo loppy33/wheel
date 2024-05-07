@@ -48,7 +48,7 @@ const PassportScanner = ({ setPassScaner, passScaner, setFront, setBack, setSelf
         className="camera"
         idealFacingMode={passScaner === 'selfie' ? FACING_MODES.USER : FACING_MODES.ENVIRONMENT}
         onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
-        isFullscreen={true}
+        isFullscreen={true} imageCompression={0.5}
       />
     </div>
   );
